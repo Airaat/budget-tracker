@@ -11,8 +11,8 @@ define('VIEWS_PATH', $root . 'views' . DIRECTORY_SEPARATOR);
 require_once(APP_PATH . "App.php");
 
 $csv_files = get_csv_files(FILES_PATH);
-$data = extract_data($csv_files);
-[$total_income_val, $total_expense_val] = calculate_total($data);
+$transactions = extract_data($csv_files);
+[$total_income_val, $total_expense_val] = calculate_total($transactions);
 $net_total_val = $total_income_val - $total_expense_val;
 
 // formatting
