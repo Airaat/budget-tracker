@@ -34,29 +34,37 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                foreach ($data as $row) {
-                    echo '<tr>' ;
-                    foreach ($row as $cell) {
-                        echo '<td>' . $cell . '</td>';
-                    }
-                    echo '</tr>' ;
-                
-                }
-                ?>
+                <?php foreach ($transactions as $transaction): ?> 
+                <tr>
+                    <td> <?= $transaction["Date"] ?></td>
+                    <td> <?= $transaction["Check #"] ?></td>
+                    <td> <?= $transaction["Description"] ?></td>
+                    <td>
+                        <?php if ($transaction["Amount"][0] === '-'): ?>
+                            <span style="color: red;">
+                                <?= $transaction["Amount"] ?>
+                            </span>
+                        <?php else: ?>
+                            <span style="color: green;">
+                                <?= $transaction["Amount"] ?>
+                            </span>
+                        <?php endif ?>
+                    </td>
+                </tr>
+                <?php endforeach ?>
             </tbody>
             <tfoot>
                 <tr>
                     <th colspan="3">Total Income:</th>
-                    <td><?php echo $total_income;?></td>
+                    <td><?=$total_income;?></td>
                 </tr>
                 <tr>
                     <th colspan="3">Total Expense:</th>
-                    <td><?php echo $total_expense;?></td>
+                    <td><?=$total_expense;?></td>
                 </tr>
                 <tr>
                     <th colspan="3">Net Total:</th>
-                    <td><?php echo $net_total;?></td>
+                    <td><?=$net_total;?></td>
                 </tr>
             </tfoot>
         </table>
