@@ -58,4 +58,28 @@ function extract_data($csv_files) {
 
     return $data;
 }
+
+
+/**
+ * Calculate total income, total expense from the given data.
+ * 
+ * @param array $data
+ * @return array [$total_income, $total_expense] 
+ */
+function calculate_total($data) {
+    $total_income = 0.0;
+    $total_expense = 0.0;
+    
+    foreach ($data as $content) {
+        $string = str_replace(",", "", $content["Amount"]);
+        $sign = ($string[0] === '-') ? -1 : 1;
+        $num = substr($string, strpos($string, '$') + 1);
+
+        $val = $sign * doubleval($num);
+        $total_income += ($val > 0) ? $val : 0.0;
+        $total_expense += ($val < 0) ? $val : 0.0;
+    }
+
+    return [$total_income, $total_expense];
+}
 ?>
