@@ -80,6 +80,8 @@ function calculate_total($data) {
         $total_expense += ($val < 0) ? $val : 0.0;
     }
 
+    $total_expense = abs($total_expense);
+
     return [$total_income, $total_expense];
 }
 ?>
