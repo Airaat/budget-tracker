@@ -27,18 +27,18 @@
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Date</th>
-                    <th>Check #</th>
-                    <th>Description</th>
+                    <th>Category</th>
                     <th>Amount</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($transactions as $transaction): ?> 
                 <tr>
+                    <td> <?= $transaction["ID"] ?></td>
                     <td> <?= $transaction["Date"] ?></td>
-                    <td> <?= $transaction["Check #"] ?></td>
-                    <td> <?= $transaction["Description"] ?></td>
+                    <td> <?= $transaction["Category"] ?></td>
                     <td>
                         <?php if ($transaction["Amount"][0] === '-'): ?>
                             <span style="color: red;">

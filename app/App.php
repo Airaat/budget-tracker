@@ -44,8 +44,8 @@ function extract_data($csv_files) {
     
             while (($line = fgetcsv($file)) !== false) {
                 // Date formatting
-                $date = date_create($line[0]);
-                $line[0] = date_format($date, "M j, Y");
+                $date = date_create($line[1]);
+                $line[1] = date_format($date, "M j, Y");
     
                 $data[] = array_combine($headers, $line);
     
